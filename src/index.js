@@ -20,7 +20,7 @@ const renderApp = (NextApp) => {
     document.querySelector('[data-js="app"]')
   )
 }
-
+// DUMB COMMENT
 renderApp(App)
 
 if (module.hot) {
