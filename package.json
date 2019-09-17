@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "yarn dev",
+    "start": "node server.js",
     "dev": "webpack-dashboard -- node server.js",
     "test": "jest --coverage",
     "test:watch": "yarn test -- --watch",
@@ -29,6 +29,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
@@ -56,10 +57,13 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "deep-freeze": "0.0.1",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4"
   }
 }
