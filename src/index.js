@@ -9,6 +9,7 @@ import App from './app'
 import reducer from './redux-flow'
 
 const store = createStore(reducer)
+// console.log('STORE => ', store)
 
 const renderApp = (NextApp) => {
   render(
@@ -20,7 +21,7 @@ const renderApp = (NextApp) => {
     document.querySelector('[data-js="app"]')
   )
 }
-// DUMB COMMENT
+
 renderApp(App)
 
 if (module.hot) {

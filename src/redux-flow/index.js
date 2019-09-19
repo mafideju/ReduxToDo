@@ -1,6 +1,6 @@
 'use strict'
 
-import { ADD_TODO, TOGGLE_TODO } from './actions'
+import { ADD_TODO, TOGGLE_TODO } from './types'
 
 export const initialState = []
 

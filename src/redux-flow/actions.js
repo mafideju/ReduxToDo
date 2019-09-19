@@ -1,2 +1,8 @@
-export const ADD_TODO = 'ADD_TODO'
-export const TOGGLE_TODO = 'TOGGLE_TODO'
+import ADD_TODO from './types'
+
+export const addTodo = (text) => {
+  return {
+    type: ADD_TODO,
+    payload: { id: 0, text }
+  }
+}
