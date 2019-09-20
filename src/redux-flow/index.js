@@ -1,5 +1,3 @@
-'use strict'
-
 import { ADD_TODO, TOGGLE_TODO } from './types'
 
 export const initialState = []

@@ -1,8 +1,7 @@
-import ADD_TODO from './types'
+import uuid from 'uuid'
+import { ADD_TODO } from './types'
 
-export const addTodo = (text) => {
-  return {
-    type: ADD_TODO,
-    payload: { id: 0, text }
-  }
-}
+export const addTodo = (text) => ({
+  type: ADD_TODO,
+  payload: { id: uuid(), text }
+})

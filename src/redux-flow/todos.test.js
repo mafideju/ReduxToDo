@@ -3,7 +3,7 @@
 import { expect as expectChai } from 'chai';
 import deepFreeze from 'deep-freeze'
 import todos, { initialState } from './index';
-import { ADD_TODO, TOGGLE_TODO } from './actions';
+import { ADD_TODO, TOGGLE_TODO } from './types';
 
 describe('TODO LIST', () => {
     it('TODO DEVE SER UMA FUNÇÃO', () => {
@@ -69,7 +69,7 @@ describe('TODO LIST', () => {
     it('ACTION UNDEFINED MUST RETURN INITIAL STATE', () => {
         // const initialState = [];
         const before = undefined;
-        const action = deepFreeze({ type: 'QUALQUER COISA' });
+        const action = deepFreeze({ });
         const after = initialState;
         expectChai(todos(before, action)).to.be.deep.equal(after);
     });

@@ -1,5 +1,3 @@
-'use strict'
-
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
@@ -9,7 +7,7 @@ import App from './app'
 import reducer from './redux-flow'
 
 const store = createStore(reducer)
-// console.log('STORE => ', store)
+console.log('STORE => ', store)
 
 const renderApp = (NextApp) => {
   render(
