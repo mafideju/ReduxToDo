@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from './redux-flow/actions'
+import { addTodo, toggleTodo } from './redux-flow/actions'
 
-const App = ({ todos, handleSubmit }) => (
+const App = ({ todos, handleSubmit, handleToggle }) => (
   <div>
     <form onSubmit={handleSubmit}>
       <input type='text' name='todo' />
@@ -10,7 +10,11 @@ const App = ({ todos, handleSubmit }) => (
     </form>
     {todos.map(todo => (
       <ul>
-        <li key={todo.id} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+        <li
+          key={todo.id}
+          style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+          onClick={handleToggle(todo.id)}
+        >
           {todo.text}
         </li>
       </ul>))}
@@ -25,6 +29,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleSubmit: (e) => {
     e.preventDefault()
     dispatch(addTodo(e.target.todo.value))
+    e.target.todo.value = ''
+  },
+  handleToggle: (id) => (e) => {
+    dispatch(toggleTodo(id))
   }
 })
 
