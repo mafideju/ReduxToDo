@@ -4,10 +4,12 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import App from './app'
-import reducer from './redux-flow'
+import rootReducer from './reducers'
 
-const store = createStore(reducer)
-console.log('STORE => ', store)
+const store = createStore(rootReducer)
+// store.subscribe(() => {
+//   console.log('STORE => ', store.getState())
+// })
 
 const renderApp = (NextApp) => {
   render(
