@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import reducerTodos from './redux-flow'
-import reducerFilters from './filters'
+import reducerTodos from './components/TodoList/reducer'
+import reducerFilters from './components/Filters/reducer'
 
 // export const rootReducer = (state = {}, action) => {
 //   return {

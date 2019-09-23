@@ -2,7 +2,7 @@
 
 import { expect as expectChai } from 'chai';
 import deepFreeze from 'deep-freeze'
-import todos, { initialState } from './index';
+import todos, { initialState } from './reducer';
 import { ADD_TODO, TOGGLE_TODO } from './types';
 
 describe('TODO LIST', () => {

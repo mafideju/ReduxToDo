@@ -1,6 +1,6 @@
 import { expect as expectChai } from 'chai';
 import deepFreeze from 'deep-freeze'
-import filters, { initialState } from './index';
+import filters, { initialState } from './reducer';
 import { 
   SET_VISIBILITY_FILTER, 
   SHOW_COMPLETED, 

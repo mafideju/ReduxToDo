@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleTodo } from '../redux-flow/actions'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../filters/types'
+import { toggleTodo } from './actions'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../Filters/types'
 
 const TodoList = ({ handleToggle, todos, activeFilter }) => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setFilter } from '../filters/actions'
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../filters/types'
+import { setFilter } from './actions'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from './types'
 
 const Filters = ({ activeFilter, handleFilter }) => {
   return (

@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
-import App from './app'
+import App from './App'
 import rootReducer from './reducers'
 
 const store = createStore(rootReducer)
@@ -25,8 +25,8 @@ const renderApp = (NextApp) => {
 renderApp(App)
 
 if (module.hot) {
-  module.hot.accept('./app', () => {
-    const NextApp = require('./app').default
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default
     renderApp(NextApp)
   })
 }
