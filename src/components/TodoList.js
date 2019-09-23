@@ -1,25 +1,44 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { toggleTodo } from '../redux-flow/actions'
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../filters/types'
 
-const TodoList = ({ handleToggle, todos }) => {
+const TodoList = ({ handleToggle, todos, activeFilter }) => {
   return (
     <React.Fragment>
-      {todos.map(todo => (
-        <ul>
+      <ul>
+        {getVisibleTodos(todos, activeFilter).map(todo => (
           <li
             key={todo.id}
-            style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+            style={{
+              textDecoration: todo.completed ? 'line-through' : 'none',
+              color: todo.completed ? 'grey' : 'black'
+            }}
             onClick={handleToggle(todo.id)}
           >
             {todo.text}
           </li>
-        </ul>))}
+        ))}
+      </ul>
     </React.Fragment>
   )
 }
 
-const mapStateToProps = (state) => ({ todos: state.todos })
+const getVisibleTodos = (todos, activeFilter) => {
+  switch (activeFilter) {
+    case SHOW_ALL:
+      return todos
+    case SHOW_COMPLETED:
+      return todos.filter(todo => todo.completed)
+    case SHOW_ACTIVE:
+      return todos.filter(todo => !todo.completed)
+  }
+}
+
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+  activeFilter: state.filters
+})
 
 const mapDispatchToProps = (dispatch) => ({
   handleToggle: (id) => (e) => {
