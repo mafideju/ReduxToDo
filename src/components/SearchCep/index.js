@@ -1,35 +1,37 @@
-import React from 'react'
-// import { connect } from 'react-redux'
+import React, { PureComponent } from 'react'
+import Axios from 'axios'
+import SearchCep from './SearchCep'
 
-const SearchCep = () => {
-  return (
-    <React.Fragment>
-      <form>
-        <input type='text' name='cep' />
-        <button type='submit'>Busca CEP</button>
-      </form>
-      <table>
-        <thead>
-          <tr>
-            <td>CEP</td>
-            <td>ENDEREÇO</td>
-            <td>BAIRRO</td>
-            <td>CIDADE</td>
-            <td>ESTADO</td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>0982030</td>
-            <td>Rua Tal</td>
-            <td>Jardim Tal</td>
-            <td>São Paulo</td>
-            <td>SP</td>
-          </tr>
-        </tbody>
-      </table>
-    </React.Fragment>
-  )
+class SearchCepContainer extends PureComponent {
+  state = {
+    address: '',
+    city: '',
+    code: '',
+    district: '',
+    state: '',
+    status: 1,
+    isFetching: false
+  }
+
+  handleSearchCep = async (e) => {
+    e.preventDefault()
+    this.setState({ isFetching: true })
+    const response = await Axios
+      .get(`http://apps.widenet.com.br/busca-cep/api/cep.json?code=${e.target.cep.value}`)
+    this.setState(response.data)
+    // e.target.cep.value = ''
+    if (response.data.status === 0) {
+      throw new Error(response.data.message)
+    }
+    console.log(response)
+    this.setState({ isFetching: false })
+  }
+
+  render () {
+    return (
+      <SearchCep {...this.state} handleSearchCep={this.handleSearchCep} />
+    )
+  }
 }
 
-export default SearchCep
+export default SearchCepContainer

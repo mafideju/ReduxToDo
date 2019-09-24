@@ -1,0 +1,52 @@
+import React from 'react'
+
+const SearchCep = ({
+  address,
+  city,
+  code,
+  district,
+  state,
+  status,
+  handleSearchCep,
+  isFetching
+}) => {
+  return (
+    <React.Fragment>
+      <form onSubmit={handleSearchCep}>
+        <input type='text' name='cep' />
+        <button
+          type='submit'
+          disabled={isFetching}
+        >
+          {!isFetching ? 'Busca CEP' : 'Localizando...' }
+        </button>
+      </form>
+
+      {status === 0 && (<div>CEP Não Encontrado</div>)}
+      {status === 1 && (
+        <table>
+          <thead>
+            <tr>
+              <td>CEP</td>
+              <td>ENDEREÇO</td>
+              <td>BAIRRO</td>
+              <td>CIDADE</td>
+              <td>ESTADO</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{code}</td>
+              <td>{address}</td>
+              <td>{district}</td>
+              <td>{city}</td>
+              <td>{state}</td>
+            </tr>
+          </tbody>
+        </table>
+      )}
+    </React.Fragment>
+  )
+}
+
+export default SearchCep
