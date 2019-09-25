@@ -22,7 +22,11 @@ const SearchCep = ({
         </button>
       </form>
 
-      {status === 0 && (<div>CEP Não Encontrado</div>)}
+      {status === 0 && (
+        <div>
+          <h3>CEP Não Encontrado</h3>
+        </div>
+      )}
       {status === 1 && (
         <table>
           <thead>

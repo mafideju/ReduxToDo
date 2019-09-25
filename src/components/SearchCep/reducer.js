@@ -6,11 +6,10 @@ export const initialState = {
   code: '',
   district: '',
   state: '',
-  status: 1,
-  isFetching: false
+  status: 1
 }
 
-const filters = (state = initialState, action) => {
+const address = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_ADDRESS:
       return action.payload
@@ -18,4 +17,4 @@ const filters = (state = initialState, action) => {
   return state
 }
 
-export default filters
+export default address

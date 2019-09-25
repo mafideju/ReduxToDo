@@ -7,9 +7,9 @@ import App from './App'
 import rootReducer from './reducers'
 
 const store = createStore(rootReducer)
-// store.subscribe(() => {
-//   console.log('STORE => ', store.getState())
-// })
+store.subscribe(() => {
+  console.log('STORE => ', store.getState())
+})
 
 const renderApp = (NextApp) => {
   render(
@@ -28,5 +28,10 @@ if (module.hot) {
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default
     renderApp(NextApp)
+  })
+
+  module.hot.accept('./reducers', () => {
+    const nextReducer = require('./reducers').default
+    store.replaceReducer(nextReducer)
   })
 }
