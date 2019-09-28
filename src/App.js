@@ -5,13 +5,13 @@ import Filters from './components/Filters'
 import SearchCep from './components/SearchCep'
 
 const App = () => (
-  <React.Fragment>
+  <div>
     <Form />
     <TodoList />
     <Filters />
     <hr />
     <SearchCep />
-  </React.Fragment>
+  </div>
 )
 
 export default App

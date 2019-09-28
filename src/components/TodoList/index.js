@@ -5,7 +5,7 @@ import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../Filters/types'
 
 const TodoList = ({ handleToggle, todos, activeFilter }) => {
   return (
-    <React.Fragment>
+    <div>
       <ul>
         {getVisibleTodos(todos, activeFilter).map(todo => (
           <li
@@ -20,7 +20,7 @@ const TodoList = ({ handleToggle, todos, activeFilter }) => {
           </li>
         ))}
       </ul>
-    </React.Fragment>
+    </div>
   )
 }
 

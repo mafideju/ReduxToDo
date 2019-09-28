@@ -15,5 +15,5 @@ new WebpackDevServer(webpack(config), {
     return console.log(err)
   }
 
-  console.log('Listening on http://localhost:3456')
+  console.log('Servidor React Webpack na Porta 3456')
 })

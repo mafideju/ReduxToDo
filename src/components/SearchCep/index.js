@@ -21,7 +21,7 @@ class SearchCepContainer extends PureComponent {
       <SearchCep
         {...this.state}
         {...this.props.address}
-        handleSearchCep={this.handleSearchCep}
+        onHandleSearchCep={this.handleSearchCep}
       />
     )
   }

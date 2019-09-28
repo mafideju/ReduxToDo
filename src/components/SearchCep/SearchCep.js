@@ -7,18 +7,18 @@ const SearchCep = ({
   district,
   state,
   status,
-  handleSearchCep,
+  onHandleSearchCep,
   isFetching
 }) => {
   return (
-    <React.Fragment>
-      <form onSubmit={handleSearchCep}>
+    <div>
+      <form onSubmit={onHandleSearchCep}>
         <input type='text' name='cep' />
         <button
           type='submit'
           disabled={isFetching}
         >
-          {!isFetching ? 'Busca CEP' : 'Localizando...' }
+          {!isFetching ? 'Busca CEP' : 'Localizando...'}
         </button>
       </form>
 
@@ -49,7 +49,7 @@ const SearchCep = ({
           </tbody>
         </table>
       )}
-    </React.Fragment>
+    </div>
   )
 }
 

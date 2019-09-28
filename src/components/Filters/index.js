@@ -18,7 +18,9 @@ const Filters = ({ activeFilter, handleFilter }) => {
             key={item.action}
             style={{ marginRight: '8px' }}
             onClick={handleFilter(item.action)}
-          >{item.label}</a>
+          >
+            {item.label}
+          </a>
         )
       })}
     </div>

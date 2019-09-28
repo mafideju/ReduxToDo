@@ -1,12 +1,19 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import App from './App'
 import rootReducer from './reducers'
 
-const store = createStore(rootReducer)
+const thunkIsMe = ({ dispatch, getState }) => (next) => (action) => {
+  if (typeof action === 'function') {
+    return action(dispatch, getState)
+  }
+  return next(action)
+}
+
+const store = createStore(rootReducer, applyMiddleware(thunkIsMe))
 store.subscribe(() => {
   console.log('STORE => ', store.getState())
 })

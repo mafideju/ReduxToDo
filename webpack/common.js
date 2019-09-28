@@ -31,6 +31,7 @@ module.exports = {
     enforce: 'pre',
     test: /\.js$/,
     include: paths.src,
+    exclude: /node_modules/,
     use: {
       loader: 'standard-loader',
       options: {
@@ -45,7 +46,7 @@ module.exports = {
     use: ['react-hot-loader/webpack', {
       loader: 'babel-loader',
       options: {
-        presets: [['env', { modules: false }], 'stage-0', 'react'],
+        presets: [['env', { modules: false }], 'es2015', 'react', 'stage-0'],
         plugins: [
           ['transform-runtime', {
             helpers: false,
