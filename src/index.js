@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 import App from './App'
@@ -13,10 +13,15 @@ const thunkIsMe = ({ dispatch, getState }) => (next) => (action) => {
   return next(action)
 }
 
-const store = createStore(rootReducer, applyMiddleware(thunkIsMe))
-store.subscribe(() => {
-  console.log('STORE => ', store.getState())
-})
+const storeEnhancer = compose(
+  applyMiddleware(thunkIsMe),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+const store = createStore(rootReducer, storeEnhancer)
+// store.subscribe(() => {
+//   console.log('STORE => ', store.getState())
+// })
 
 const renderApp = (NextApp) => {
   render(

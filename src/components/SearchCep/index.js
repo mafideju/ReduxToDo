@@ -1,25 +1,17 @@
 import React, { PureComponent } from 'react'
-import Axios from 'axios'
 import { connect } from 'react-redux'
-import { updateAddress } from './actions'
+import { fetchAddress } from './actions'
 import SearchCep from './SearchCep'
 
 class SearchCepContainer extends PureComponent {
-  state = { isFetching: false }
-
-  handleSearchCep = async (e) => {
+  handleSearchCep = (e) => {
     e.preventDefault()
-    this.setState({ isFetching: true })
-    const response = await Axios
-      .get(`http://apps.widenet.com.br/busca-cep/api/cep.json?code=${e.target.cep.value}`)
-    this.props.updateAddress(response.data)
-    this.setState({ isFetching: false })
+    this.props.fetchAddress(e.target.cep.value)
   }
 
   render () {
     return (
       <SearchCep
-        {...this.state}
         {...this.props.address}
         onHandleSearchCep={this.handleSearchCep}
       />
@@ -32,7 +24,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateAddress: (address) => dispatch(updateAddress(address))
+  fetchAddress: (address) => dispatch(fetchAddress(address))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchCepContainer)
